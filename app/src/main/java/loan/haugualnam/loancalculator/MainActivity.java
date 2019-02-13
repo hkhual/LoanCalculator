@@ -10,16 +10,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.text.NumberFormat;
+
 public class MainActivity extends AppCompatActivity {
 
-    private EditText mLoanAmount;
-    private EditText mRate;
-    private EditText mTerm;
+    //User input editText
+     private EditText mLoanAmount;
+     private EditText mRate;
+     private EditText mTerm;
 
+     //Data types to hold user input
+      private int loan;
+     private double annualRate;
+     private int termOfLoan;
+
+     //TextView to display payment and result.
     private TextView mDisplay_Payment;
-
     private TextView monthly_result;
 
+
+    NumberFormat currencyFormat =
+            NumberFormat.getCurrencyInstance();
 
 
     @Override
@@ -28,67 +41,101 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //Get text input from user
+        //Get user input
         mLoanAmount = findViewById(R.id.loan_userInput);
         mRate = findViewById(R.id.rate_userInput);
         mTerm = findViewById(R.id.term_userInput);
 
+
+
+
         //Display monthly payment
         mDisplay_Payment = findViewById(R.id.display_payment);
+        monthly_result = findViewById(R.id.monthly_payment_textView);
+        monthly_result.setVisibility(View.INVISIBLE);
         mDisplay_Payment.setVisibility(View.INVISIBLE);
 
 
 
 
-//
-//
-//        String loanAmount = mLoanAmount.getText().toString();
-//        int loan = Integer.parseInt(loanAmount);
-//
-//        String rate = mRate.getText().toString();
-//        double annualRate = Double.parseDouble(rate);
-//
-//        String loanTerm = mTerm.getText().toString();
-//        int termOfLoan = Integer.parseInt(loanTerm);
-//
-//
-//        //Payment = principle * monthly interest/(1-1(1+MonthlyInterest) * months));
-//
-//        //Montly Payment
-//        double payment = loan * annualRate / (1- (Math.pow(1/(1 + annualRate), termOfLoan)));
+        findViewById(R.id.calculate_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    //Convert user input loanAmount into integer
+                    //Convert user input rate into double
+                    //Convert user input loan term into integer
+                    loan = Integer.parseInt(mLoanAmount.getText().toString());
+                    annualRate = Double.parseDouble(mRate.getText().toString());
+                    termOfLoan = Integer.parseInt(mTerm.getText().toString());
+
+                    //Convert interest rate into a decimal
+                    //eg. 4.5% = 0.045
+                    annualRate /= 100.0;
+
+                   //Monthly interest rate
+                    //is the yearly rate divided by 12
+                    double monthlyRate = annualRate / 12.0;
 
 
 
-        monthly_result = findViewById(R.id.monthly_payment_textView);
-        monthly_result.setVisibility(View.INVISIBLE);
+                if(!isValidLoan(loan)){
+                    mLoanAmount.setError("Invalid input");
+                }
+                else if(!(isValidRate(annualRate))){
+                    mRate.setError("Invalid input");
+                }
+                else if(!(isValidTerm(termOfLoan))){
+                    mTerm.setError("Invalid input");
+                } else {
+                    //Calculate monthly payment
+                    double Monthly_payment = loan * monthlyRate / (1-Math.pow(1 + monthlyRate,-termOfLoan));
 
+                    //display_payment
+                    //Send monthly payment into display_payment editText field
+                    mDisplay_Payment.setText(String.valueOf(currencyFormat.format(Monthly_payment)));
 
+                    monthly_result.setVisibility(View.VISIBLE);
+                    mDisplay_Payment.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
 
+    public boolean isValidLoan(int loan){
+
+        if(loan > 0){
+            return true;
+        }else if(loan == 0){
+            return false;
+        }else {
+            return false;
+        }
 
 
     }
 
 
+    public boolean isValidRate(double rate){
 
-    public void loanCalculate(View v) {
-
-        monthly_result.setVisibility(View.VISIBLE);
-        mDisplay_Payment.setVisibility(View.VISIBLE);
-
-
-
-
-    }
-
-
-    public boolean isValidate(String str){
-            return !str.isEmpty();
-
+        if(rate >= 0 && rate <= 1){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
 
+    public boolean isValidTerm(int term){
 
+        if (term > 0) {
+            return true;
+        }else {
+            return false;
+        }
+
+    }
 
 
 
@@ -113,6 +160,9 @@ public class MainActivity extends AppCompatActivity {
            toast.show();
 
 
+        }else if( id== R.id.action_about){
+            Intent intent = new Intent(this, AboutPage.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
