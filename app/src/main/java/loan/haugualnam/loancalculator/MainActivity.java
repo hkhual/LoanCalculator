@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
             NumberFormat.getCurrencyInstance();
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,10 +162,14 @@ public class MainActivity extends AppCompatActivity {
            toast.show();
 
 
+
         }else if( id== R.id.action_about){
             Intent intent = new Intent(this, AboutPage.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }
