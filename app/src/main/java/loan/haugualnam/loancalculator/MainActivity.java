@@ -3,6 +3,7 @@ package loan.haugualnam.loancalculator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,16 +78,25 @@ public class MainActivity extends AppCompatActivity {
                     //is the yearly rate divided by 12
                     double monthlyRate = annualRate / 12.0;
 
+                    //if(TextUtils.isEmpty())
+
 
 
                 if(!isValidLoan(loan)){
                     mLoanAmount.setError("Invalid input");
+                    //Stop the function execution
+                    return;
                 }
                 else if(!(isValidRate(annualRate))){
                     mRate.setError("Invalid input");
+                    //Stop the function execution
+                    return;
                 }
                 else if(!(isValidTerm(termOfLoan))){
                     mTerm.setError("Invalid input");
+                    //Stop the function execution
+                    return;
+
                 } else {
                     //Calculate monthly payment
                     double Monthly_payment = loan * monthlyRate / (1-Math.pow(1 + monthlyRate,-termOfLoan));
@@ -106,9 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(loan > 0){
             return true;
-        }else if(loan == 0){
-            return false;
-        }else {
+        } else {
             return false;
         }
 
