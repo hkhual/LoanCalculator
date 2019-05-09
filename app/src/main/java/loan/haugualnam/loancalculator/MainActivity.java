@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     NumberFormat currencyFormat =
             NumberFormat.getCurrencyInstance();
+
+
 
 
     @Override
@@ -168,10 +168,14 @@ public class MainActivity extends AppCompatActivity {
            toast.show();
 
 
+
         }else if( id== R.id.action_about){
             Intent intent = new Intent(this, AboutPage.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }
