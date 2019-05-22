@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
       private double annualRate;
       private int termOfLoan;
 
+      private double monthlyRate;
+
+
 
 
     NumberFormat currencyFormat =
@@ -43,10 +46,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //Convert interest rate into a decimal
+        //eg. 4.5% = 0.045
+        annualRate /= 100.0;
+
+        //Monthly interest rate
+        //is the yearly rate divided by 12
+        monthlyRate = annualRate / 12.0;
+
+
+
         //Get user input
         mLoanAmount = findViewById(R.id.loan_userInput);
         mRate = findViewById(R.id.rate_userInput);
         mTerm = findViewById(R.id.term_userInput);
+
+
+
 
 
         //Display monthly payment
@@ -54,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
         monthly_result = findViewById(R.id.monthly_payment_textView);
         monthly_result.setVisibility(View.INVISIBLE);
         mDisplay_Payment.setVisibility(View.INVISIBLE);
+
+
+
 
 
 
@@ -78,13 +98,6 @@ public class MainActivity extends AppCompatActivity {
                     return;
 
                 }
-                //Convert interest rate into a decimal
-                //eg. 4.5% = 0.045
-                annualRate /= 100.0;
-
-                //Monthly interest rate
-                //is the yearly rate divided by 12
-                double monthlyRate = annualRate / 12.0;
 
 
                 //Convert user input loanAmount into integer
