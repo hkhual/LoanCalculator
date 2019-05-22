@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
     NumberFormat currencyFormat =
             NumberFormat.getCurrencyInstance();
 
-
+    //Input helper class
+    InputHelper inputHelp;
 
 
     @Override
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         monthly_result.setVisibility(View.INVISIBLE);
         mDisplay_Payment.setVisibility(View.INVISIBLE);
 
+        //initialization
+        inputHelp = new InputHelper();
 
 
 
