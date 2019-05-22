@@ -167,9 +167,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-           Toast toast = Toast.makeText(getApplicationContext(), "Coming soon!",Toast.LENGTH_SHORT);
-           toast.show();
-
+            
+            startActivity(new Intent(MainActivity.this, ActionSettings.class));
 
 
         }else if( id== R.id.action_about){
