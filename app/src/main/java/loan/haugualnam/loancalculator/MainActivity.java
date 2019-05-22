@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
      private EditText mRate;
      private EditText mTerm;
 
+     private TextView totalPrincipal;
+     private TextView totalInterest;
+
     //TextView to display payment and result.
     private TextView mDisplay_Payment;
     private TextView monthly_result;
@@ -27,35 +30,20 @@ public class MainActivity extends AppCompatActivity {
 
      //Data types to hold user input
       private int loan;
-      private double annualRate;
+      private double annualRate = 0.0;
       private int termOfLoan;
-
       private double monthlyRate;
 
-
+      private double Monthly_payment = 0.0;
 
 
     NumberFormat currencyFormat =
             NumberFormat.getCurrencyInstance();
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        //Convert interest rate into a decimal
-        //eg. 4.5% = 0.045
-        annualRate /= 100.0;
-
-        //Monthly interest rate
-        //is the yearly rate divided by 12
-        monthlyRate = annualRate / 12.0;
-
-
 
         //Get user input
         mLoanAmount = findViewById(R.id.loan_userInput);
@@ -63,63 +51,74 @@ public class MainActivity extends AppCompatActivity {
         mTerm = findViewById(R.id.term_userInput);
 
 
-
-
-
         //Display monthly payment
         mDisplay_Payment = findViewById(R.id.display_payment);
         monthly_result = findViewById(R.id.monthly_payment_textView);
+
+
+        //total loan and total interest paid
+        totalPrincipal = findViewById(R.id.total_principal_paid);
+        totalInterest = findViewById(R.id.total_interest_paid);
+
+
+        //make them invisible
         monthly_result.setVisibility(View.INVISIBLE);
         mDisplay_Payment.setVisibility(View.INVISIBLE);
 
+        totalPrincipal.setVisibility(View.INVISIBLE);
+        totalInterest.setVisibility(View.INVISIBLE);
+
+
+    }
+
+
+    public void Calculate(View view){
+
+        if(TextUtils.isEmpty(mLoanAmount.getText().toString().trim())){
+            mLoanAmount.setError("Invalid input");
+            //Stop the function execution
+            return;
+        }
+        else if(TextUtils.isEmpty(mRate.getText().toString().trim())){
+            mRate.setError("Invalid input");
+            //Stop the function execution
+            return;
+        }
+        else if(TextUtils.isEmpty(mTerm.getText().toString().trim())){
+            mTerm.setError("Invalid input");
+            //Stop the function execution
+            return;
+        }
+
+        //Convert user input loanAmount into integer
+        //Convert user input rate into double
+        //Convert user input loan term into integer
+        loan = Integer.parseInt(mLoanAmount.getText().toString().trim());
+        annualRate = Double.parseDouble(mRate.getText().toString().trim());
+        termOfLoan = Integer.parseInt(mTerm.getText().toString().trim());
+
+        monthlyRate = (annualRate/100.0) / 12.0;
+
+        //Calculate monthly payment
+         Monthly_payment = loan * monthlyRate / (1-Math.pow(1 + monthlyRate,-termOfLoan));
+
+        //display_payment
+        //Send monthly payment into display_payment editText field
+        mDisplay_Payment.setText(String.valueOf(currencyFormat.format(Monthly_payment)));
+
+
+
+        totalPrincipal.setText(String.valueOf("Total Principal Paid: "+ loan));
 
 
 
 
+        monthly_result.setVisibility(View.VISIBLE);
+        mDisplay_Payment.setVisibility(View.VISIBLE);
 
+        totalPrincipal.setVisibility(View.VISIBLE);
+        //totalInterest.setVisibility(View.INVISIBLE);
 
-        findViewById(R.id.calculate_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(TextUtils.isEmpty(mLoanAmount.getText().toString().trim())){
-                    mLoanAmount.setError("Invalid input");
-                    //Stop the function execution
-                    return;
-                }
-                else if(TextUtils.isEmpty(mRate.getText().toString().trim())){
-                    mRate.setError("Invalid input");
-                    //Stop the function execution
-                    return;
-                }
-                else if(TextUtils.isEmpty(mTerm.getText().toString().trim())){
-                    mTerm.setError("Invalid input");
-                    //Stop the function execution
-                    return;
-
-                }
-
-
-                //Convert user input loanAmount into integer
-                //Convert user input rate into double
-                //Convert user input loan term into integer
-                loan = Integer.parseInt(mLoanAmount.getText().toString());
-                annualRate = Double.parseDouble(mRate.getText().toString());
-                termOfLoan = Integer.parseInt(mTerm.getText().toString());
-
-
-
-                //Calculate monthly payment
-                double Monthly_payment = loan * monthlyRate / (1-Math.pow(1 + monthlyRate,-termOfLoan));
-
-                //display_payment
-                //Send monthly payment into display_payment editText field
-                mDisplay_Payment.setText(String.valueOf(currencyFormat.format(Monthly_payment)));
-
-                monthly_result.setVisibility(View.VISIBLE);
-                mDisplay_Payment.setVisibility(View.VISIBLE);
-            }
-        });
     }
 
 
@@ -150,6 +149,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }
