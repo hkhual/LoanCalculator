@@ -20,21 +20,22 @@ public class MainActivity extends AppCompatActivity {
      private EditText mRate;
      private EditText mTerm;
 
-     //Data types to hold user input
-      private int loan;
-     private double annualRate;
-     private int termOfLoan;
-
-     //TextView to display payment and result.
+    //TextView to display payment and result.
     private TextView mDisplay_Payment;
     private TextView monthly_result;
+
+
+     //Data types to hold user input
+      private int loan;
+      private double annualRate;
+      private int termOfLoan;
+
 
 
     NumberFormat currencyFormat =
             NumberFormat.getCurrencyInstance();
 
-    //Input helper class
-    InputHelper inputHelp;
+
 
 
     @Override
@@ -42,13 +43,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //Get user input
         mLoanAmount = findViewById(R.id.loan_userInput);
         mRate = findViewById(R.id.rate_userInput);
         mTerm = findViewById(R.id.term_userInput);
-
-
 
 
         //Display monthly payment
@@ -57,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
         monthly_result.setVisibility(View.INVISIBLE);
         mDisplay_Payment.setVisibility(View.INVISIBLE);
 
-        //initialization
-        inputHelp = new InputHelper();
 
 
 
@@ -66,88 +62,52 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                    //Convert user input loanAmount into integer
-                    //Convert user input rate into double
-                    //Convert user input loan term into integer
-                    loan = Integer.parseInt(mLoanAmount.getText().toString());
-                    annualRate = Double.parseDouble(mRate.getText().toString());
-                    termOfLoan = Integer.parseInt(mTerm.getText().toString());
-
-                    //Convert interest rate into a decimal
-                    //eg. 4.5% = 0.045
-                    annualRate /= 100.0;
-
-                   //Monthly interest rate
-                    //is the yearly rate divided by 12
-                    double monthlyRate = annualRate / 12.0;
-
-                    //if(TextUtils.isEmpty())
-
-
-
-                if(!isValidLoan(loan)){
+                if(TextUtils.isEmpty(mLoanAmount.getText().toString().trim())){
                     mLoanAmount.setError("Invalid input");
                     //Stop the function execution
                     return;
                 }
-                else if(!(isValidRate(annualRate))){
+                else if(TextUtils.isEmpty(mRate.getText().toString().trim())){
                     mRate.setError("Invalid input");
                     //Stop the function execution
                     return;
                 }
-                else if(!(isValidTerm(termOfLoan))){
+                else if(TextUtils.isEmpty(mTerm.getText().toString().trim())){
                     mTerm.setError("Invalid input");
                     //Stop the function execution
                     return;
 
-                } else {
-                    //Calculate monthly payment
-                    double Monthly_payment = loan * monthlyRate / (1-Math.pow(1 + monthlyRate,-termOfLoan));
-
-                    //display_payment
-                    //Send monthly payment into display_payment editText field
-                    mDisplay_Payment.setText(String.valueOf(currencyFormat.format(Monthly_payment)));
-
-                    monthly_result.setVisibility(View.VISIBLE);
-                    mDisplay_Payment.setVisibility(View.VISIBLE);
                 }
+                //Convert interest rate into a decimal
+                //eg. 4.5% = 0.045
+                annualRate /= 100.0;
+
+                //Monthly interest rate
+                //is the yearly rate divided by 12
+                double monthlyRate = annualRate / 12.0;
+
+
+                //Convert user input loanAmount into integer
+                //Convert user input rate into double
+                //Convert user input loan term into integer
+                loan = Integer.parseInt(mLoanAmount.getText().toString());
+                annualRate = Double.parseDouble(mRate.getText().toString());
+                termOfLoan = Integer.parseInt(mTerm.getText().toString());
+
+
+
+                //Calculate monthly payment
+                double Monthly_payment = loan * monthlyRate / (1-Math.pow(1 + monthlyRate,-termOfLoan));
+
+                //display_payment
+                //Send monthly payment into display_payment editText field
+                mDisplay_Payment.setText(String.valueOf(currencyFormat.format(Monthly_payment)));
+
+                monthly_result.setVisibility(View.VISIBLE);
+                mDisplay_Payment.setVisibility(View.VISIBLE);
             }
         });
     }
-
-    public boolean isValidLoan(int loan){
-
-        if(loan > 0){
-            return true;
-        } else {
-            return false;
-        }
-
-
-    }
-
-
-    public boolean isValidRate(double rate){
-
-        if(rate >= 0 && rate <= 1){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-
-    public boolean isValidTerm(int term){
-
-        if (term > 0) {
-            return true;
-        }else {
-            return false;
-        }
-
-    }
-
 
 
     @Override
@@ -167,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            
+
             startActivity(new Intent(MainActivity.this, ActionSettings.class));
 
 
@@ -177,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
