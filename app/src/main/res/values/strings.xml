@@ -1,13 +1,9 @@
 <resources>
     <string name="app_name">Loan Calculator</string>
-    <string name="action_settings">Settings</string>
-
-
 
     <string name="loan_amount">Loan Amount</string>
     <string name="loan_term">Loan term in months</string>
     <string name="loan_interest_rate">Interest rate per year %</string>
-
 
 
     <string name="loan_Amount_userInput">5000</string>
@@ -15,17 +11,21 @@
     <string name="interest_rate_per_year">4.5</string>
 
 
-    <string name="monthly_payment">Monthly Payment</string>
+    <string name="monthly_payment">Monthly Payments</string>
     <string name="monthly_payment_result">Montlhy payment</string>
+
+
+    <string name="total_principal_paid">Total Principal Paid</string>
+    <string name="total_interest_paid">Total Interest Paid</string>
 
 
 
     <string name="calculate">Calculate</string>
-
+    <string name="monthly_payment_number">500</string>
 
 
     <string name="aboutPage">
-    Loan Calculator is a easy to use and free loan estimate
+    Loan Calculator is an easy to use and free loan estimate
         calculator.
     </string>
 

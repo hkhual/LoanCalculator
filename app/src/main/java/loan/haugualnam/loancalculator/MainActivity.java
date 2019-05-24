@@ -107,9 +107,11 @@ public class MainActivity extends AppCompatActivity {
         mDisplay_Payment.setText(String.valueOf(currencyFormat.format(Monthly_payment)));
 
 
+        double totalInterestPayment = Monthly_payment * termOfLoan - loan;
 
-        totalPrincipal.setText(String.valueOf("Total Principal Paid: "+ loan));
 
+        totalPrincipal.setText(String.valueOf("Total Principal Paid: "+ currencyFormat.format(loan)));
+        totalInterest.setText(String.valueOf("Total Interest Paid: "+ currencyFormat.format(totalInterestPayment)));
 
 
 
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         mDisplay_Payment.setVisibility(View.VISIBLE);
 
         totalPrincipal.setVisibility(View.VISIBLE);
-        //totalInterest.setVisibility(View.INVISIBLE);
+        totalInterest.setVisibility(View.VISIBLE);
 
     }
 
@@ -138,12 +140,7 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-
-            startActivity(new Intent(MainActivity.this, ActionSettings.class));
-
-
-        }else if( id== R.id.action_about){
+        if( id== R.id.action_about){
             Intent intent = new Intent(this, AboutPage.class);
             startActivity(intent);
         }

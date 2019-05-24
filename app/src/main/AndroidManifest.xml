@@ -22,9 +22,6 @@
             android:parentActivityName=".MainActivity"></activity>
 
 
-            <activity android:name=".ActionSettings"
-                android:label="Settings"
-                android:parentActivityName=".MainActivity"></activity>
 
     </application>
 
