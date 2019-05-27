@@ -21,6 +21,10 @@
             android:label="About US"
             android:parentActivityName=".MainActivity"></activity>
 
+        <activity android:name=".Privacy"
+            android:label="Privacy"
+            android:parentActivityName=".MainActivity"></activity>
+
 
 
     </application>
