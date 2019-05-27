@@ -107,12 +107,11 @@ public class MainActivity extends AppCompatActivity {
         mDisplay_Payment.setText(String.valueOf(currencyFormat.format(Monthly_payment)));
 
 
-        double totalInterestPayment = Monthly_payment * termOfLoan - loan;
 
+        double totalInterestPayment = Monthly_payment * termOfLoan - loan;
 
         totalPrincipal.setText(String.valueOf("Total Principal Paid: "+ currencyFormat.format(loan)));
         totalInterest.setText(String.valueOf("Total Interest Paid: "+ currencyFormat.format(totalInterestPayment)));
-
 
 
         monthly_result.setVisibility(View.VISIBLE);
