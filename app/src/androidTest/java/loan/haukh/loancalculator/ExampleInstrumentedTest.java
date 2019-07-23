@@ -1,4 +1,4 @@
-package loan.haugualnam.loancalculator;
+package loan.haukh.loancalculator;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

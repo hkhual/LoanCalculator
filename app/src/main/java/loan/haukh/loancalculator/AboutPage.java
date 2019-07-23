@@ -1,16 +1,16 @@
-package loan.haugualnam.loancalculator;
+package loan.haukh.loancalculator;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+public class AboutPage extends AppCompatActivity {
 
-public class Privacy extends AppCompatActivity {
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.privacy_activity);
+        setContentView(R.layout.activity_about);
+
 
     }
-
-
 }

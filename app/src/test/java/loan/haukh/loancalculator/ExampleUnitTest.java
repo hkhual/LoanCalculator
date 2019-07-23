@@ -1,4 +1,4 @@
-package loan.haugualnam.loancalculator;
+package loan.haukh.loancalculator;
 
 import org.junit.Test;
 
