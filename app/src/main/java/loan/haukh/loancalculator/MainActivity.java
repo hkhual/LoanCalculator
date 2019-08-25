@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -121,6 +123,47 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        Toast.makeText(this, "In onStart", Toast.LENGTH_SHORT).show();
+        Log.i("Info", "On Start");
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        Toast.makeText(this, "In Onresume", Toast.LENGTH_SHORT).show();
+        Log.i("Info", "On Resume");
+    }
+
+
+    @Override
+    public void onPause(){
+        super.onPause();
+
+        Toast.makeText(this, "On Pause", Toast.LENGTH_SHORT).show();
+        Log.i("info", "On Pause");
+    }
+
+
+    @Override
+    public void onStop(){
+        super.onStop();
+
+        Toast.makeText(this, "On Stop", Toast.LENGTH_SHORT).show();
+        Log.i("info", "On Stop");
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+
+        Toast.makeText(this, "On Destroy", Toast.LENGTH_SHORT).show();
+        Log.i("info", "On Destroy");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
