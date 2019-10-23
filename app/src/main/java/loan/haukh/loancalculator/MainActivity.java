@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
 
      //Data types to hold user input
-      private int loan;
-      private double annualRate = 0.0;
-      private int termOfLoan;
-      private double monthlyRate;
+      int loan;
+      double annualRate = 0.0;
+      int termOfLoan;
+      double monthlyRate;
 
-      private double Monthly_payment = 0.0;
+      double Monthly_payment = 0.0;
 
 
     NumberFormat currencyFormat =
