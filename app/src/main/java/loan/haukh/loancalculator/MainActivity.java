@@ -185,6 +185,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AboutPage.class);
             startActivity(intent);
         }
+        if( id== R.id.privacy_policy){
+            Intent intent = new Intent(this, Privacy.class);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 }

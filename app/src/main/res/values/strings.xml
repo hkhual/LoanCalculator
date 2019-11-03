@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Loan Calculator</string>
 
+    <string name="privacy">Privacy</string>
+    <string name="about">About</string>
+
     <string name="loan_amount">Loan Amount</string>
     <string name="loan_term">Loan term in months</string>
     <string name="loan_interest_rate">Interest rate per year %</string>
@@ -24,14 +27,14 @@
     <string name="monthly_payment_number">500</string>
 
 
-    <string name="aboutPage">
+    <string name="aboutPage_text">
     Loan Calculator is an easy to use and free loan estimate
         calculator.
     </string>
 
 
-    <string name="privacy">
-
+    <string name="privacy_text">
+                Privacy and Policy
     </string>
 
 
