@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="Loan Calculator" />
+            android:title="@string/loan_calculator" />
 
         <item
-            android:id="@+id/nav_pic"
-            android:title="mortage_Calcultor" />
+            android:id="@+id/nav_mortage"
+            android:title="@string/mortgage_calculator" />
     </group>
 </menu>

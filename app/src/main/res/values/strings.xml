@@ -26,6 +26,8 @@
     <string name="calculate">Calculate</string>
     <string name="monthly_payment_number">500</string>
 
+    <string name="loan_calculator">Loan Calculator</string>
+    <string name="mortgage_calculator">Mortgage Calculator</string>
 
     <string name="aboutPage_text">
     Loan Calculator is an easy to use and free loan estimate
