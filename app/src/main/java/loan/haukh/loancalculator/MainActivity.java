@@ -11,11 +11,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
-
     //User input editText
      private EditText mLoanAmount;
      private EditText mRate;
