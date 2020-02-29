@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Loan Calculator</string>
 
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="privacy">Privacy</string>
     <string name="about">About</string>
 
@@ -38,6 +42,5 @@
     <string name="privacy_text">
                 Privacy and Policy
     </string>
-
 
 </resources>

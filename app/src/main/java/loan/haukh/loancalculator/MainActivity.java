@@ -1,8 +1,17 @@
 package loan.haukh.loancalculator;
 
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,9 +22,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+import com.google.android.material.navigation.NavigationView;
 import java.text.NumberFormat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
     //User input editText
      private EditText mLoanAmount;
      private EditText mRate;
@@ -47,8 +60,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        );
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
+
+
+
+
 
         //Get user input
         mLoanAmount = findViewById(R.id.loan_userInput);
@@ -74,6 +104,19 @@ public class MainActivity extends AppCompatActivity {
         totalInterest.setVisibility(View.INVISIBLE);
 
 
+
+
+
+    }
+
+    @Override
+    public void onBackPressed(){
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        } else{
+            super.onBackPressed();
+        }
     }
 
 
@@ -169,6 +212,8 @@ public class MainActivity extends AppCompatActivity {
         Log.i("info", "On Destroy");
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -194,5 +239,23 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        //Handle navigation view item clicks here.
+        int id= menuItem.getItemId();
+        if(id == R.id.nav_home){
+            Intent account = new Intent(this, MainActivity.class );
+                    startActivity(account);
+        } else if(id == R.id.nav_mortage){
+            Intent intent = new Intent(this,    MortgageActivity.class );
+            startActivity(intent);
+
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
