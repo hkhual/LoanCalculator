@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Loan Calculator</string>
 
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -38,9 +37,11 @@
         calculator.
     </string>
 
-
     <string name="privacy_text">
                 Privacy and Policy
     </string>
+
+
+    <string name="home_price">Home Price</string>
 
 </resources>

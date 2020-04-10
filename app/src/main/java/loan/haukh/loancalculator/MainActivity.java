@@ -76,10 +76,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-
-
-
-
         //Get user input
         mLoanAmount = findViewById(R.id.loan_userInput);
         mRate = findViewById(R.id.rate_userInput);
