@@ -74,8 +74,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
         //Get user input
         mLoanAmount = findViewById(R.id.loan_userInput);
         mRate = findViewById(R.id.rate_userInput);
@@ -98,10 +96,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         totalPrincipal.setVisibility(View.INVISIBLE);
         totalInterest.setVisibility(View.INVISIBLE);
-
-
-
-
 
     }
 
