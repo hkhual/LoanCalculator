@@ -11,14 +11,15 @@
     <string name="loan_term">Loan term in months</string>
     <string name="loan_interest_rate">Interest rate per year %</string>
 
-
     <string name="loan_Amount_userInput">5000</string>
     <string name="Loan_term_in_Months">60</string>
     <string name="interest_rate_per_year">4.5</string>
 
+    <string name="hint_home_price">300000</string>
+
 
     <string name="monthly_payment">Monthly Payments</string>
-    <string name="monthly_payment_result">Montlhy payment</string>
+    <string name="monthly_payment_result">Monthly payment</string>
 
 
     <string name="total_principal_paid">Total Principal Paid</string>

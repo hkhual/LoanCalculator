@@ -161,46 +161,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    @Override
-    public void onStart(){
-        super.onStart();
-        Toast.makeText(this, "In onStart", Toast.LENGTH_SHORT).show();
-        Log.i("Info", "On Start");
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-
-        Toast.makeText(this, "In Onresume", Toast.LENGTH_SHORT).show();
-        Log.i("Info", "On Resume");
-    }
-
-
-    @Override
-    public void onPause(){
-        super.onPause();
-
-        Toast.makeText(this, "On Pause", Toast.LENGTH_SHORT).show();
-        Log.i("info", "On Pause");
-    }
-
-
-    @Override
-    public void onStop(){
-        super.onStop();
-
-        Toast.makeText(this, "On Stop", Toast.LENGTH_SHORT).show();
-        Log.i("info", "On Stop");
-    }
-
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-
-        Toast.makeText(this, "On Destroy", Toast.LENGTH_SHORT).show();
-        Log.i("info", "On Destroy");
-    }
+//    @Override
+//    public void onStart(){
+//        super.onStart();
+//        Toast.makeText(this, "In onStart", Toast.LENGTH_SHORT).show();
+//        Log.i("Info", "On Start");
+//    }
+//
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//
+//        Toast.makeText(this, "In Onresume", Toast.LENGTH_SHORT).show();
+//        Log.i("Info", "On Resume");
+//    }
+//
+//
+//    @Override
+//    public void onPause(){
+//        super.onPause();
+//
+//        Toast.makeText(this, "On Pause", Toast.LENGTH_SHORT).show();
+//        Log.i("info", "On Pause");
+//    }
+//
+//
+//    @Override
+//    public void onStop(){
+//        super.onStop();
+//
+//        Toast.makeText(this, "On Stop", Toast.LENGTH_SHORT).show();
+//        Log.i("info", "On Stop");
+//    }
+//
+//    @Override
+//    public void onDestroy(){
+//        super.onDestroy();
+//
+//        Toast.makeText(this, "On Destroy", Toast.LENGTH_SHORT).show();
+//        Log.i("info", "On Destroy");
+//    }
 
 
 

@@ -3,7 +3,6 @@ package loan.haukh.loancalculator;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class Privacy extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
